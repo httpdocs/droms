@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	
+	<!-- 宿舍模块 -->
+ 	<package name="drom" extends="struts-default"  namespace="/drom"> 
+ 		
+ 		<!-- 显示全部宿舍页面 -->
+    	<action name="*form" class="com.droms.form.DromForm" method="{1}Form"> 
+      		<result>/WEB-INF/jsp/{1}Drom.jsp</result> 
+      		<result name = "input" type = "redirectAction">listform</result>
+    	</action> 
+ 		
+ 		<action name="*action" class="com.droms.action.DromAction" method="{1}Drom">
+    		<result type="redirectAction">listform</result>
+    	</action> 	
+ 	 </package>
+ 	 
+
+</struts>

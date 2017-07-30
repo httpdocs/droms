@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<include file="config/struts-student.xml"/>
+	
+	<!-- 登录注册模块 -->
+ 	<package name="admin" extends="struts-default"  namespace="/admin"> 
+ 		
+ 		<!-- 显示登陆页面 -->
+    	<action name="loginform" class="com.droms.form.LoginForm"> 
+      		<result>/WEB-INF/jsp/login.jsp</result> 
+    	</action> 
+ 		<!-- 显示注册页面 -->
+    	<action name="registform" class="com.droms.form.RegistForm"> 
+      		<result>/WEB-INF/jsp/regist.jsp</result> 
+    	</action> 
+    	<!-- 用户管理 -->
+    	<action name = "adminform" >
+    		<result>/WEB-INF/jsp/admin.jsp</result>
+    	</action>
+    	
+    	<!-- 登录功能 -->
+    	<action name = "loginaction" class="com.droms.action.LoginAction">
+    		
+    		<result type = "chain">
+				<param name="namespace">/student</param> 
+           		<param name="actionName">listform</param>
+			</result>
+    		<result name = "error"  type="redirectAction">loginform</result>
+    	</action>
+    	
+    	<!-- 注册功能 -->
+    	<action name = "registaction" class="com.droms.action.RegistAction">
+    		<result type="redirectAction">loginform</result> 
+    		<result name="error"  type="redirectAction">registform</result> 
+    		
+    	</action>
+    	<!-- 用户管理 -->
+    	<action name="adminaction" class="com.droms.action.AdminAction">
+    		<result>/WEB-INF/jsp/admin.jsp</result>
+    	</action>
+    	
+    	<!-- 注销用户 -->
+    	<action name="exitaction" class= "com.droms.action.AdminAction" method="exit">
+    		<result type="redirectAction">loginform</result>
+    	</action>
+ 	 </package>
+ 	 
+
+</struts>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="droms"
+  id="myeclipse.1433596698544"
+  context-root="/droms"
+  j2ee-spec="5.0"
+  archive="droms.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

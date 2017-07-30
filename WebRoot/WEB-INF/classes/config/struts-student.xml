@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+ 	<package name="student" extends="struts-default"  namespace="/student"> 
+    	
+    	<!-- 显示添加学生或者修改学生页面 -->
+    	<action name = "*form" class="com.droms.form.StudentForm" method="{1}Form">
+    		<result >/WEB-INF/jsp/{1}Student.jsp</result>
+    		<result name = "input" type = "redirectAction">listform</result>
+    	</action>
+    	
+    	
+    	<action name="*action" class="com.droms.action.StudentAction" method="{1}">
+   			<result  type="redirectAction">listform</result>
+   			<result name="find">/WEB-INF/jsp/listStudent.jsp</result>
+   			<result name = "error" type="redirectAction">{1}form</result>
+    	</action>
+    	
+ 	 </package>
+</struts>
